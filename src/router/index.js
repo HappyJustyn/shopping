@@ -5,8 +5,16 @@ Vue.use(Router);
 
 let Routers = [
   {
-    path: '/',
-    redirect: ''
+    path: "/list",
+    meta: {
+      title: '商品列表'
+    },
+    // 路由懒加载写法
+    component: (resolve) => require(['../views/list.vue'], resolve)
+  },
+  {
+    path: '*',
+    redirect: '/list'
   }
 ];
 

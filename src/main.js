@@ -3,29 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import Vuex from 'vuex'
+import store from './vuex/store'
 import './style.css'
 
 // 关闭生产模式下给出的提示
 Vue.config.productionTip = false;
-
-Vue.use(Vuex);
-
-const store = new Vuex.Store({
-  state: {
-
-  },
-  getters: {
-
-  },
-  mutations: {
-
-  },
-  actions: {
-
-  }
-});
-
 
 /* eslint-disable no-new */
 new Vue({
