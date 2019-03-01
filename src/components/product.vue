@@ -3,6 +3,7 @@
     <router-link :to="'/product/'+info.id" class="product-main">
       <img :src="info.image">
       <h4>{{info.name}}</h4>
+      <div class="product-sales">销量：{{info.sales}}</div>
       <div class="product-color" :style="{background: colors[info.color]}"></div>
       <div class="product-cost">￥{{info.cost}}</div>
     </router-link>
@@ -60,6 +61,10 @@
 
   .product-main:hover h4 {
     color: #0070c9;
+  }
+
+  .product-sales {
+    color: black;
   }
 
   .product-color {
