@@ -42,6 +42,26 @@
     <div class="cart-promotion" v-show="cartList.length">
       <span>使用优惠码</span>
       <input type="text" v-model="promotionCode">
+      <span
+        class="cart-control-promotion"
+        @click="handleCheckCode">验证</span>
+    </div>
+    <div class="cart-footer" v-show="cartList.length">
+      <div class="cart-footer-desc">
+        共计<span>{{countAll}}</span>件商品
+      </div>
+      <div class="cart-footer-desc">
+        应付总额<span>{{costAll - promotion}}</span>
+        <br>
+        <template v-if="promotion">
+          （优惠<span>￥{{promotion}}</span>）
+        </template>
+      </div>
+      <div class="cart-footer-desc">
+        <div
+          class="cart-control-order"
+          @click="handleOrder">现在结算</div>
+      </div>
     </div>
   </div>
 </template>
@@ -100,6 +120,23 @@
       },
       handleDelete(index) {
         this.$store.commit('deleteCart', this.cartList[index].id);
+      },
+      // 模拟验证优惠码
+      handleCheckCode() {
+        if (this.promotionCode === '') {
+          window.alert('请输入优惠码');
+        }
+        if (this.promotionCode !== 'Vue.js') {
+          window.alert('优惠码验证失败');
+        } else {
+          this.promotion = 500;
+        }
+      },
+      // 模拟完成下单
+      handleOrder() {
+        this.$store.dispatch('buy').then(() => {
+          window.alert('购买成功');
+        });
       }
     }
   }
